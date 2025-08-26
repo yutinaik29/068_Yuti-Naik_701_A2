@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Welcome to Our Shop</h1>
+
+    <h2>Categories</h2>
+    <ul>
+        <% categories.forEach(cat => { %>
+            <li>
+                <%= cat.name %>
+                <ul>
+                    <% categories.filter(c => c.parent && c.parent.equals(cat._id)).forEach(sub => { %>
+                        <li><a href="/category/<%= sub._id %>"><%= sub.name %></a></li>
+                    <% }) %>
+                </ul>
+            </li>
+        <% }) %>
+    </ul>
+
+    <h2>Products</h2>
+    <div class="products">
+        <% products.forEach(prod => { %>
+            <div class="product-card">
+                <% if(prod.image){ %>
+                    <img src="<%= prod.image %>" alt="<%= prod.name %>" width="150">
+                <% } %>
+                <h3><%= prod.name %></h3>
+                <p><%= prod.description %></p>
+                <p>Price: $<%= prod.price %></p>
+                <form action="/cart/add/<%= prod._id %>" method="POST">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+
+    <a href="/cart">View Cart</a>
+</body>
+</html>

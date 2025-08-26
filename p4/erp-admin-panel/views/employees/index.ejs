@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employees</title>
+</head>
+<body>
+  <h1>Employees List</h1>
+  <a href="/employees/add">Add Employee</a> |
+  <a href="/admin/logout">Logout</a>
+  <br><br>
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>EmpID</th>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Total Salary</th>
+      <th>Email</th>
+    </tr>
+    <% employees.forEach(emp => { %>
+      <tr>
+        <td><%= emp.empId %></td>
+        <td><%= emp.name %></td>
+        <td><%= emp.position %></td>
+        <td><%= emp.totalSalary %></td>
+        <td><%= emp.email %></td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

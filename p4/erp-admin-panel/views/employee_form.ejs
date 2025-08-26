@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<h2><%= employee ? 'Edit' : 'New' %> Employee</h2>
+<form action="<%= employee ? '/employees/' + employee._id + '?_method=PUT' : '/employees' %>" method="post">
+  <label>Name <input type="text" name="name" value="<%= employee ? employee.name : '' %>" required></label><br>
+  <label>Email <input type="email" name="email" value="<%= employee ? employee.email : '' %>" required></label><br>
+  <label>Designation <input type="text" name="designation" value="<%= employee ? employee.designation : '' %>"></label><br>
+  <label>Basic <input type="number" name="basic" value="<%= employee ? employee.basic : 0 %>"></label><br>
+  <label>HRA <input type="number" name="hra" value="<%= employee ? employee.hra : 0 %>"></label><br>
+  <label>Allowances <input type="number" name="allowances" value="<%= employee ? employee.allowances : 0 %>"></label><br>
+  <label>Password <input type="text" name="password" placeholder="(leave blank to auto-generate)"></label><br>
+  <button type="submit"><%= employee ? 'Update' : 'Create' %></button>
+</form>
+<%- include('partials/footer') %>

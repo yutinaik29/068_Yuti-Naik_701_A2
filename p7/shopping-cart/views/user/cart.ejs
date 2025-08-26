@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Your Cart</h1>
+
+    <% if(cart.length === 0){ %>
+        <p>Cart is empty.</p>
+    <% } else { %>
+        <ul>
+            <% cart.forEach(item => { %>
+                <li>
+                    <strong><%= item.product.name %></strong> - $<%= item.product.price %> x <%= item.qty %>
+                </li>
+            <% }) %>
+        </ul>
+        <p>Total: $<%= cart.reduce((sum, item) => sum + item.product.price * item.qty, 0) %></p>
+    <% } %>
+
+    <a href="/">Continue Shopping</a>
+</body>
+</html>

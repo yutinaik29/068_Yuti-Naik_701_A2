@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Products</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Products</h1>
+
+    <form action="/admin/products" method="POST">
+        <input type="text" name="name" placeholder="Product Name" required>
+        <textarea name="description" placeholder="Description"></textarea>
+        <input type="number" name="price" placeholder="Price" required>
+        <select name="category" required>
+            <option value="">-- Select Category --</option>
+            <% categories.forEach(cat => { %>
+                <option value="<%= cat._id %>"><%= cat.name %></option>
+            <% }) %>
+        </select>
+        <input type="text" name="image" placeholder="Image URL">
+        <button type="submit">Add Product</button>
+    </form>
+
+    <h2>Existing Products</h2>
+    <ul>
+        <% products.forEach(prod => { %>
+            <li>
+                <strong><%= prod.name %></strong> - <%= prod.category ? prod.category.name : 'No Category' %> - $<%= prod.price %>
+            </li>
+        <% }) %>
+    </ul>
+
+    <a href="/admin">Back to Dashboard</a>
+</body>
+</html>

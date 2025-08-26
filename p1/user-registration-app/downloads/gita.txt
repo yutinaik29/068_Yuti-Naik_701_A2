@@ -1,0 +1,6 @@
+User Registration Details
+
+Username: gita
+Email: gita@gmail.com
+Gender: Female
+Hobbies: Reading

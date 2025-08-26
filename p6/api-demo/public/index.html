@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cat Fact Utility</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Cat Facts Demo</h1>
+
+  <h2>Frontend Direct Call</h2>
+  <button id="getFact">Get Cat Fact (Frontend)</button>
+  <p id="fact"></p>
+
+  <h2>Backend API Call</h2>
+  <button id="getBackendFact">Get Cat Fact (Backend)</button>
+  <p id="backendFact"></p>
+
+  <script>
+    // 1. Call API directly from frontend
+    $("#getFact").click(function () {
+      $.get("https://catfact.ninja/fact", function (data) {
+        $("#fact").text(data.fact);
+      });
+    });
+
+    // 2. Call API through backend (Express server)
+    $("#getBackendFact").click(function () {
+      $.get("/backend-catfact", function (data) {
+        $("#backendFact").text(data.fact);
+      });
+    });
+  </script>
+</body>
+</html>

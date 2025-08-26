@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+<h2>Employees</h2>
+<a href="/employees/new">Add new employee</a>
+<table border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>EmpID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Designation</th>
+      <th>Total Salary</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% employees.forEach(e => { %>
+      <tr>
+        <td><%= e.empId %></td>
+        <td><%= e.name %></td>
+        <td><%= e.email %></td>
+        <td><%= e.designation %></td>
+        <td><%= e.totalSalary %></td>
+        <td>
+          <a href="/employees/<%= e._id %>/edit">Edit</a> |
+          <form action="/employees/<%= e._id %>?_method=DELETE" method="post" style="display:inline" onsubmit="return confirm('Delete?')">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<%- include('partials/footer') %>

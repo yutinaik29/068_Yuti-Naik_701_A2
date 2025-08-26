@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employees List</title>
+</head>
+<body>
+  <h2>Employees</h2>
+  <a href="/employees/add">➕ Add Employee</a> | 
+  <a href="/admin/logout">🚪 Logout</a>
+  <br><br>
+
+  <table border="1" cellpadding="8">
+    <tr>
+      <th>Emp ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Basic Salary</th>
+      <th>HRA</th>
+      <th>DA</th>
+      <th>Total Salary</th>
+      <th>Actions</th>
+    </tr>
+    <% employees.forEach(emp => { %>
+      <tr>
+        <td><%= emp.empId %></td>
+        <td><%= emp.name %></td>
+        <td><%= emp.email %></td>
+        <td><%= emp.basicSalary %></td>
+        <td><%= emp.hra %></td>
+        <td><%= emp.da %></td>
+        <td><%= emp.totalSalary %></td>
+        <td>
+          <a href="/employees/edit/<%= emp._id %>">✏️ Edit</a> | 
+          <form action="/employees/delete/<%= emp._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit">❌ Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

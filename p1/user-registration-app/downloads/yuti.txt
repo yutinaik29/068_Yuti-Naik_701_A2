@@ -1,0 +1,6 @@
+User Registration Details
+
+Username: yuti
+Email: yuti@gmail.com
+Gender: Female
+Hobbies: Traveling
